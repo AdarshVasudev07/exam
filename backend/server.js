@@ -7,9 +7,11 @@ app.use(cors());
 app.use(express.json()); // Parse JSON
 
 // Connect to local MongoDB
-mongoose.connect('mongodb://localhost:27017//taskmanager')
-  .then(() => console.log(' MongoDB connected'))
-  .catch(err => console.log(' Connection error:', err));
+mongoose.connect('mongodb://localhost:27017/taskmanager', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 
 // Task model
 const Task = mongoose.model('Task', {
